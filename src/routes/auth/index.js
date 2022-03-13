@@ -1,0 +1,10 @@
+const express = require('express')
+const controller = require('./controller')
+const validator = require('./validator')
+const router = express.Router()
+router.post('/password-reset',validator.email(),controller.email)
+router.post('/password-reset/:userId/:token',validator.password(),controller.password)
+router.post('/login',validator.login(),controller.validate,controller.login)
+router.post('/register',validator.register(),controller.validate,controller.register)
+router.get('/google',validator.email(),controller.google)
+module.exports =router
